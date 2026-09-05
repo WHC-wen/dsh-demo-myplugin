@@ -1,0 +1,24 @@
+{
+  "name": "dsh-plugin-prompt-optimizer",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 提示词优化插件：在输入框角落嵌入常驻星星图标，一键调用大模型润色或规则重写优化提示词，以悬浮层预览并一键替换原文。",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "plugin",
+    "prompt-optimizer",
+    "cordis"
+  ],
+  "license": "MIT"
+}
