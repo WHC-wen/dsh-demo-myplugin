@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Packed artifacts
+*.tgz
+*.tar.gz
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# Env / secrets
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json

@@ -1,0 +1,45 @@
+# Why there is no install step: this package declares no dependencies at all.
+# Why Windows is in the matrix: the tests compare lib/ with the build output byte
+# for byte, so a CRLF checkout would fail immediately — the Windows job is what
+# proves .gitattributes keeps the tree LF.
+# Why the last two steps cannot fail spuriously: verify-dsh.mjs and
+# verify-profile.mjs print SKIP and exit 0 on a machine without DSH installed.
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: build, test, verify (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build lib/ from src/
+        run: npm run build
+
+      - name: Behavioural tests
+        run: npm test
+
+      - name: Packaging guards
+        run: npm run guards
+
+      - name: Independent verification
+        run: npm run verify

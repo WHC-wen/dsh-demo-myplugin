@@ -1,0 +1,20 @@
+* text=auto eol=lf
+
+# Published artifacts are compared byte for byte by `npm test`, so a CRLF
+# checkout would break the build. Keep every text file LF, always.
+*.js   text eol=lf
+*.mjs  text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+*.md   text eol=lf
+cordis.patch.yml text eol=lf
+
+# Windows-only conveniences keep CRLF.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.tgz binary
+*.zip binary

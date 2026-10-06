@@ -1,0 +1,66 @@
+{
+  "name": "dsh-demo-myplugin",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 提示词优化插件：在输入框角落嵌入常驻星星图标，一键调用大模型润色或规则重写优化提示词，以悬浮层预览并一键替换原文。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/",
+    "src/",
+    "scripts/",
+    "tests/",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "plugin",
+    "cordis",
+    "cordis-plugin",
+    "prompt",
+    "prompt-optimizer",
+    "prompt-engineering",
+    "web"
+  ],
+  "author": "WHC-wen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WHC-wen/dsh-demo-myplugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WHC-wen/dsh-demo-myplugin/issues"
+  },
+  "homepage": "https://github.com/WHC-wen/dsh-demo-myplugin#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/build.mjs --check && node --test \"tests/*.test.mjs\"",
+    "guards": "node scripts/ci-guards.mjs",
+    "verify": "npm run guards && node scripts/verify-pack.mjs && node scripts/verify-dsh.mjs && node scripts/verify-profile.mjs",
+    "prepublishOnly": "node scripts/build.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ],
+      "external": []
+    }
+  }
+}
